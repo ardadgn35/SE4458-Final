@@ -25,6 +25,7 @@ This project is a appointment management system developed for doctors and patien
 3. **Doctor Search:** Users can search for doctors based on specialty and city.
 4. **Appointment Booking:** Users can view available time slots and book appointments with selected doctors.
 5. **Admin Panel:** Admins can approve or reject pending doctor registrations.
+6. **Docker Support:** A Dockerfile is provided for deploying the system in a containerized environment.
 
 ---
 
