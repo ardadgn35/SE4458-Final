@@ -60,6 +60,21 @@ backend/
 ├── DockerFile.txt       # Docker configuration file
 ├── package.json         # Project dependencies and scripts
 ├── node_modules/        # Installed packages and libraries
+
+## 📂 Project Structure
+
+```plaintext
+src/
+│
+├── components/          # Reusable React components
+├── pages/               # Application pages (Home, Login, etc.)
+├── styles/              # CSS files for styling
+├── routes/              # Backend API routes
+├── controllers/         # Logic for handling API requests
+├── models/              # MongoDB models for comments
+├── config/              # Database and environment configurations
+└── services/            # RabbitMQ consumer and publisher logic
+
 └── package-lock.json    # Dependency lock file to ensure consistent installations
 
 
