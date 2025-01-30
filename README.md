@@ -1,4 +1,4 @@
-cat <<EOF > README.md
+
 # Doctor Appointment Booking System
 
 This project is a appointment management system developed for doctors and patients. Doctors can register, and patients can book appointments with registered doctors. The project has a sleek and user-friendly interface.
@@ -16,53 +16,7 @@ This project is a appointment management system developed for doctors and patien
 
 ---
 
-## 🛠️ Installation
 
-1. **Clone the project:**
-   \`\`\`bash
-   git clone https://github.com/yourusername/doctor-appointment-system.git
-   cd doctor-appointment-system
-   \`\`\`
-
-2. **Install frontend dependencies (using React and Vite):**
-   \`\`\`bash
-   npm install
-   \`\`\`
-
-3. **Install backend dependencies:**  
-   Navigate to the backend folder and run the following command:
-   \`\`\`bash
-   cd server
-   npm install
-   \`\`\`
-
-4. **Set up environment variables:**  
-   Create a `.env` file in both the client and server directories with the following details:
-
-   **For client (`client/.env`):**
-   \`\`\`bash
-   VITE_BACKEND_URL=http://localhost:5000
-   VITE_GOOGLE_CLIENT_ID=208971797877-o73qp8c019cfp0pudlt5rsvf33d486bg.apps.googleusercontent.com
-   \`\`\`
-
-   **For server (`server/.env`):**
-   \`\`\`bash
-   MONGO_URI=your-mongodb-uri
-   PORT=5000
-   \`\`\`
-
-5. **Start the development servers:**  
-   Open two terminals to start the client and server:
-   \`\`\`bash
-   # Start the client
-   npm run dev
-
-   # Start the server
-   cd server
-   npm run dev
-   \`\`\`
-
----
 
 ## 🚀 Usage
 
