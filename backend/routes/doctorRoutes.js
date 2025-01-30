@@ -4,11 +4,9 @@ const multer = require('multer');
 
 const router = express.Router();
 
-// 📌 1️⃣ Multer ile Resim Yükleme Ayarları
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
-// 📌 2️⃣ Doktor Kaydı (Pending olarak eklenir)
 router.post('/register', upload.single('profileImage'), async (req, res) => {
     try {
         const { fullname, specialty, address, city, workingHours, email } = req.body;
@@ -21,7 +19,7 @@ router.post('/register', upload.single('profileImage'), async (req, res) => {
             fullname,
             specialty,
             address,
-            city, // ✅ Yeni: Şehir bilgisi
+            city, 
             workingHours,
             email,
             profileImage: req.file ? req.file.buffer.toString('base64') : null,
@@ -63,7 +61,6 @@ router.post('/approve-doctor/:id', async (req, res) => {
     }
 });
 
-// 📌 5️⃣ Onaylanmış Doktorları Listeleme (Search Doctor Sayfası İçin)
 router.get('/approved-doctors', async (req, res) => {
     try {
         const doctors = await Doctor.find({ status: 'approved' });
@@ -73,7 +70,6 @@ router.get('/approved-doctors', async (req, res) => {
     }
 });
 
-// 📌 Belirli bir doktoru ID'ye göre getir
 router.get('/doctor/:id', async (req, res) => {
     try {
         const doctor = await Doctor.findById(req.params.id);

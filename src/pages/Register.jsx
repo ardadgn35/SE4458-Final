@@ -69,7 +69,7 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white flex items-center justify-center">
+    <div className="min-h-screen bg-gray-800 flex items-center justify-center">
       <div className="max-w-lg p-6 bg-white shadow-lg rounded-lg">
         <h2 className="text-2xl font-semibold text-center mb-4">Register as a Doctor</h2>
 

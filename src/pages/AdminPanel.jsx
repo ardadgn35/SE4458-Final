@@ -28,33 +28,57 @@ const AdminPanel = () => {
   const approveDoctor = async (id) => {
     try {
       await axios.post(`${API_URL}/approve-doctor/${id}`);
-      fetchPendingDoctors(); 
+      fetchPendingDoctors();
     } catch (error) {
       alert(`❌ Failed to approve doctor: ${error.response?.data?.message || "Unknown error"}`);
     }
   };
 
   return (
-    <div className="max-w-3xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
-      <h2 className="text-2xl font-semibold text-center mb-4">Admin Panel - Pending Doctors</h2>
-      {loading && <p className="text-center text-gray-600">Loading...</p>}
-      {error && <p className="text-center text-red-600">{error}</p>}
-      {!loading && doctors.length === 0 ? (
-        <p className="text-center text-gray-600">No pending doctors.</p>
-      ) : (
-        <ul className="space-y-4">
-          {doctors.map((doctor) => (
-            <li key={doctor._id} className="p-4 border border-gray-300 rounded-lg flex justify-between items-center">
-              <div>
-                <p><strong>Name:</strong> {doctor.fullname}</p>
-              </div>
-              <button onClick={() => approveDoctor(doctor._id)} className="bg-green-500 text-white px-4 py-2 rounded-lg">
-                Approve
-              </button>
-            </li>
-          ))}
-        </ul>
-      )}
+    <div className="min-h-screen bg-gray-800 text-white flex items-center justify-center">
+      <div className="max-w-4xl p-6 bg-white shadow-lg rounded-lg text-gray-900">
+        <h2 className="text-2xl font-semibold text-center mb-4">Admin Panel - Pending Doctors</h2>
+        {loading && <p className="text-center text-gray-600">Loading...</p>}
+        {error && <p className="text-center text-red-600">{error}</p>}
+        {!loading && doctors.length === 0 ? (
+          <p className="text-center text-gray-600">No pending doctors.</p>
+        ) : (
+          <ul className="space-y-4">
+            {doctors.map((doctor) => (
+              <li key={doctor._id} className="p-4 border border-gray-300 rounded-lg flex items-center space-x-6">
+                {/* 📌 Doktorun Profil Resmi */}
+                {doctor.profileImage ? (
+                  <img
+                    src={`data:image/png;base64,${doctor.profileImage}`}
+                    alt={doctor.fullname}
+                    className="w-20 h-20 rounded-full object-cover border border-gray-300"
+                  />
+                ) : (
+                  <div className="w-20 h-20 rounded-full bg-gray-200 flex items-center justify-center text-gray-500">
+                    No Image
+                  </div>
+                )}
+
+                {/* 📌 Doktorun Detayları */}
+                <div className="flex-grow">
+                  <p><strong>Name:</strong> {doctor.fullname}</p>
+                  <p><strong>Email:</strong> {doctor.email}</p>
+                  <p><strong>Specialty:</strong> {doctor.specialty}</p>
+                  <p><strong>City:</strong> {doctor.city}</p>
+                </div>
+
+                {/* 📌 Onay Butonu */}
+                <button
+                  onClick={() => approveDoctor(doctor._id)}
+                  className="bg-green-500 text-white px-4 py-2 rounded-lg"
+                >
+                  Approve
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </div>
   );
 };
